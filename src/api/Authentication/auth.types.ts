@@ -4,12 +4,7 @@ export type LoginRequest = {
 }
 
 export type LoginResponse = {
-    token: string;
-    user: {
-        id: string;
-        email: string;
-        username?: string;
-    }
+    token: string
 }
 
 export type LogoutResponse = {

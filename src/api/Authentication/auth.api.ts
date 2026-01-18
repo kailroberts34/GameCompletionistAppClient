@@ -8,6 +8,9 @@ export async function Login (request: LoginRequest): Promise<LoginResponse | Api
         return response.data;
 
     } catch (error: any){
+        console.error('Login error:', error);
+        console.error('Error response:', error.response?.data);
+        console.error('Error status:', error.response?.status);
         return commonError('/auth/login', error.message);
     }
 }
