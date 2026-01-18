@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Login } from "../api/Authentication/auth.api";
 import type { LoginRequest } from "../api/Authentication/auth.types";
+import './login.css';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -30,10 +31,10 @@ export default function LoginPage() {
     };
 
     return (
-        <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
+        <div className="login-container">
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: '15px' }}>
+            <form onSubmit={handleSubmit} className="login-form">
+                <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input
                         id="email"
@@ -41,10 +42,10 @@ export default function LoginPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                        className="form-input"
                     />
                 </div>
-                <div style={{ marginBottom: '15px' }}>
+                <div className="form-group">
                     <label htmlFor="password">Password:</label>
                     <input
                         id="password"
@@ -52,14 +53,14 @@ export default function LoginPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                        className="form-input"
                     />
                 </div>
-                {error && <div style={{ color: 'red', marginBottom: '15px' }}>{error}</div>}
+                {error && <div className="error-message">{error}</div>}
                 <button 
                     type="submit" 
                     disabled={loading}
-                    style={{ width: '100%', padding: '10px' }}
+                    className="submit-button"
                 >
                     {loading ? 'Logging in...' : 'Login'}
                 </button>
