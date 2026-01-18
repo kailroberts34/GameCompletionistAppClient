@@ -27,3 +27,6 @@ dist-ssr
 # Build output
 bin/
 obj/
+
+
+.env
