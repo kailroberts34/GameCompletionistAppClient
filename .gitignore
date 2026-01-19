@@ -27,3 +27,8 @@ dist-ssr
 # Build output
 bin/
 obj/
+
+
+.env
+gamecompletionistappclient.esproj
+gamecompletionistappclient.esproj.user
