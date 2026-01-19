@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Login } from "../api/Authentication/auth.api";
 import type { LoginRequest } from "../api/Authentication/auth.types";
-import './login.css';
+import FormInput from '../components/FormInput';
+import Button from '../components/Button';
+import ErrorMessage from '../components/ErrorMessage';
+import '../App.css';
+import logoPath from '../assets/GameCompletionistLogo.png';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -32,40 +36,29 @@ export default function LoginPage() {
 
     return (
         <div className="login-container">
-            <h1>Login</h1>
+            <img src={logoPath} alt="Logo" className="logo" />
             <form onSubmit={handleSubmit} className="login-form">
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="form-input"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        className="form-input"
-                    />
-                </div>
-                {error && <div className="error-message">{error}</div>}
-                <button 
-                    type="submit" 
-                    disabled={loading}
-                    className="submit-button"
-                >
-                    {loading ? 'Logging in...' : 'Login'}
-                </button>
+                <FormInput
+                    id="email"
+                    label="Email:"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <FormInput
+                    id="password"
+                    label="Password:"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <ErrorMessage message={error} />
+                <Button type="submit" loading={loading}>
+                    Login
+                </Button>
             </form>
         </div>
-    )
-
+    );
 }
