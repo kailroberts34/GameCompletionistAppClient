@@ -58,6 +58,10 @@
   flex-direction: column;
 }
 
+.login-form button + button {
+    margin-top: 10px;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -87,4 +91,142 @@
 .submit-button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: gray;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.modal-buttons button {
+    flex: 1;
+}
+
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+}
+
+.dashboard-container {
+  padding: 2rem;
+  background-color: black;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.dashboard-container h1 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  text-align: left;
+}
+
+.dashboard-container p {
+  color: #333;
+  margin: 0.5rem 0;
+  text-align: left;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+  justify-items: stretch;
+}
+
+.game-card {
+  background: grey;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.game-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: aqua;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.game-card .platform {
+  color: aqua;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.game-card .release-year {
+  color: aqua;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #e74c3c;
+  font-size: 1.1rem;
+  background: #fde8e8;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  margin: 2rem;
 }
