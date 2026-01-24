@@ -4,6 +4,7 @@ import type { RegisterUserRequest } from '../../api/Authentication/auth.types';
 import FormInput from './FormInput';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
+import { useAuth } from '../../contexts/AuthContext';
 import '../../App.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const { authLogin: authLogin } = useAuth();
     const navigate = useNavigate();
 
     if (!isOpen) return null;
@@ -43,8 +45,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
             return;
         }
         
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('userId', response.userId.toString());
+        authLogin(response.token, response.userId.toString());
         setLoading(false);
         onClose();
         navigate(`/dashboard`);
