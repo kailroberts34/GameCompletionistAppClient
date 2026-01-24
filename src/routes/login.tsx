@@ -2,17 +2,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Login } from "../api/Authentication/auth.api";
 import type { LoginRequest } from "../api/Authentication/auth.types";
-import FormInput from '../components/FormInput';
-import Button from '../components/Button';
-import ErrorMessage from '../components/ErrorMessage';
+import FormInput from '../components/LoginComponents/FormInput';
+import Button from '../components/LoginComponents/Button';
+import ErrorMessage from '../components/LoginComponents/ErrorMessage';
 import '../App.css';
 import logoPath from '../assets/GameCompletionistLogo.png';
+import RegisterModal from '../components/LoginComponents/RegisterModal';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [showRegisterModal, setShowRegisterModal] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -30,8 +32,9 @@ export default function LoginPage() {
         }
 
         localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.userId.toString());
         setLoading(false);
-        navigate('/games');
+        navigate(`/dashboard`);
     };
 
     return (
@@ -58,7 +61,14 @@ export default function LoginPage() {
                 <Button type="submit" loading={loading}>
                     Login
                 </Button>
+                <Button onClick={() => setShowRegisterModal(true)}>
+                    Register
+                </Button>
             </form>
+            <RegisterModal 
+                isOpen={showRegisterModal} 
+                onClose={() => setShowRegisterModal(false)} 
+            />
         </div>
     );
 }

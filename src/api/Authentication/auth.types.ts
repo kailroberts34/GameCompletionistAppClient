@@ -4,9 +4,16 @@ export type LoginRequest = {
 }
 
 export type LoginResponse = {
-    token: string
+    token: string;
+    userId: number;
 }
 
 export type LogoutResponse = {
     message: string;
+}
+
+export type RegisterUserRequest = {
+    email: string;
+    password: string; 
+    username: string;
 }

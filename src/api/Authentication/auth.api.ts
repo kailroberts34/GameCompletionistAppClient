@@ -1,5 +1,5 @@
 import api from '../api-base';
-import { type LoginRequest, type LoginResponse, type LogoutResponse } from './auth.types';
+import { type LoginRequest, type LoginResponse, type LogoutResponse, type RegisterUserRequest } from './auth.types';
 import { commonError, type ApiErrorResponse } from '../common.types';
 
 export async function Login (request: LoginRequest): Promise<LoginResponse | ApiErrorResponse>{
@@ -24,6 +24,19 @@ export async function Logout (): Promise<LogoutResponse | ApiErrorResponse>{
 
     }catch (error: any){
         return commonError('/auth/logout', error?.message);
+    }
+
+}
+
+export async function RegisterUser (request: RegisterUserRequest): Promise<LoginResponse | ApiErrorResponse>{
+
+    try {
+
+        const response = await api.post<LoginResponse>('/auth/register', request);
+        return response.data;
+
+    }catch (error: any){
+        return commonError('/auth/register', error?.message);
     }
 
 }
