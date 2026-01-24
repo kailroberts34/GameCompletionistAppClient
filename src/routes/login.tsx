@@ -34,7 +34,7 @@ export default function LoginPage() {
         localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.userId.toString());
         setLoading(false);
-        navigate('/games/user/' + response.userId);
+        navigate(`/dashboard`);
     };
 
     return (

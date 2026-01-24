@@ -42,12 +42,12 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
             setLoading(false);
             return;
         }
-
+        
         localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.userId.toString());
         setLoading(false);
         onClose();
-        navigate('/games/user/' + response.userId);
+        navigate(`/dashboard`);
     };
 
     return (
