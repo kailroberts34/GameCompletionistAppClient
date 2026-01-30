@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { GetGamesForUser } from '../../api/Games/games.api';
-import type { GameForUser } from '../../api/Games/games.types';
 
 interface FetchGamesProps {
     userId: string;
