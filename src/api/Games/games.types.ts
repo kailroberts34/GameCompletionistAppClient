@@ -5,3 +5,10 @@ export type GameForUser = {
     ReleaseYear: number;
     PlatformName: string;
 }
+
+export type AddGameRequest = {
+    userId: number;
+    GameName: string;
+    PlatformName: string;
+    ReleaseYear: number;
+}
