@@ -13,7 +13,7 @@ export default function DeleteGameButton({ userId, gameId, onDeleteSuccess }: { 
     return (
 
         <button onClick={handleDelete} disabled={loading} className="delete-button">
-            {loading ? 'Deleting...' : 'Delete Game'}
+            {loading ? 'Deleting...' : 'x'}
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </button>
 

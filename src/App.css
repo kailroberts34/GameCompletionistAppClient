@@ -421,6 +421,7 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   width: 100%;
 }
 
@@ -602,4 +603,17 @@
 
 .delete-button:active {
   background-color: #bd2130;
+}
+
+add-games-button {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding-top: 1.5em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
