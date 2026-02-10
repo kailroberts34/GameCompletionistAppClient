@@ -1,4 +1,5 @@
 import { useGames } from '../../hooks/useGames';
+import DeleteGameButton from './DeleteGameButton';
 
 interface FetchGamesProps {
     userId: string;
@@ -31,6 +32,7 @@ export default function GamesBody({ userId, onRefetchReady }: FetchGamesProps) {
                             <h3>{game.gameName || 'No Name'}</h3>
                             <p className="platform">{game.platformName || 'No Platform'}</p>
                             <p className="release-year">{game.releaseYear || 'Unknown Year'}</p>
+                            <DeleteGameButton userId={userId} gameId={game.gameId || game.GameId} onDeleteSuccess={refetch} />
                         </div>
                     ))}
                 </div>

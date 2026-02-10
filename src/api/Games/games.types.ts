@@ -12,3 +12,8 @@ export type AddGameRequest = {
     PlatformName: string;
     ReleaseYear: number;
 }
+
+export type DeleteGameForUserRequest = {
+    userId: number;
+    gameId: number;
+}

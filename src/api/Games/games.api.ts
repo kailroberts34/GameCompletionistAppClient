@@ -1,4 +1,4 @@
-import type { GameForUser, AddGameRequest } from './games.types';
+import type { GameForUser, AddGameRequest, DeleteGameForUserRequest } from './games.types';
 import api from '../api-base';
 import type { ApiErrorResponse } from '../common.types';
 import { commonError } from '../common.types';
@@ -21,4 +21,16 @@ export async function AddGameForUser(request: AddGameRequest): Promise<GameForUs
     } catch (error: any) {
         return commonError('/games', error?.message);
     }
+
+    
+}
+
+export async function DeleteGameForUser(request: DeleteGameForUserRequest): Promise<{ success: boolean } | ApiErrorResponse> {
+    try {
+        await api.post(`/games/delete`, request);
+        return { success: true };
+    } catch (error: any) {
+        return commonError(`/games/delete`, error?.message);
+    }
+
 }
